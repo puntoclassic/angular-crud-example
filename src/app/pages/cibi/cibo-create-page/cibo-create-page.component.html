@@ -1,0 +1,13 @@
+<h4>Crea un nuovo cibo</h4>
+<form [formGroup]="form" (submit)="formSubmit(form.value)">
+    <label>Nome del cibo</label><br />
+    <input type="text" name="name" formControlName="name" /><br />
+    <p *ngIf="form.controls['name'].hasError('required') && form.controls['name'].dirty">Il campo non può essere vuoto
+    </p>
+    <label>Prezzo</label><br />
+    <p *ngIf="form.controls['price'].hasError('min') && form.controls['price'].dirty">Il campo deve essere maggiore di
+        zero
+    </p>
+    <input type="number" name="price" formControlName="price" /><br /><br />
+    <button type="submit" *ngIf="form.valid && form.dirty">Crea cibo</button>
+</form>

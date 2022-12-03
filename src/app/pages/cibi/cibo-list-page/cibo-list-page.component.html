@@ -1,0 +1,25 @@
+<h4>Elenco cibi</h4>
+<ul>
+    <li>
+        <a [routerLink]="['/cibi/create']">Crea nuovo cibo</a>
+    </li>
+</ul>
+<table *ngIf="cibi">
+    <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Azioni</th>
+    </tr>
+    <tr *ngFor="let row of cibi">
+        <td>
+            {{row.id}}
+        </td>
+        <td>
+            {{row.name}}
+        </td>
+        <td>
+            <a [routerLink]="['/cibi/edit',row.id]">Modifica</a> | <a (click)="deleteRow(row.id!)">Elimina</a>
+        </td>
+    </tr>
+</table>
+<p *ngIf="!cibi">Caricamento in corso ...</p>
